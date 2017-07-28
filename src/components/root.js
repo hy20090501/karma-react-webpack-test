@@ -8,15 +8,18 @@ class Root extends React.Component {
       name: ''
     };
 
-    this.handleChange  = (e) => {
-      var newName = e.target.value;
-
-      this.setState({
-        name: newName
-      });
-    }
   }
+  handleChange(e) {
+    var newName = e.target.value;
 
+    this.setState({
+      name: newName
+    });
+  }
+  handleClick(data) {
+    console.log('you are clicking me...');
+    console.log('msg: ' + data.msg);
+  }
   render() {
     return (
       <div>
@@ -25,12 +28,15 @@ class Root extends React.Component {
         <p>
           Please input your name here:
           <input ref="input"
-            onChange={this.handleChange}
+            onChange={this.handleChange.bind(this)}
             value={this.state.name}
           />
         </p>
 
         <p>Hello, <span ref="name">{this.state.name}</span> </p>
+        <div>
+           <span className="flag" onClick={this.handleClick.bind(this,{msg:"1"})}>click me</span>
+        </div>
       </div>
     );
   }

@@ -22,4 +22,9 @@ describe('root', function () {
     const nameNode = ReactDOM.findDOMNode(root.refs.name);
     expect(nameNode.textContent).toEqual(newValue);
   });
+
+  it('mock click', function () {
+    var root = TestUtils.renderIntoDocument(<Root/>);
+    TestUtils.Simulate.click(TestUtils.findRenderedDOMComponentWithClass(root,"flag"), {msg: "1"});
+  });
 });
